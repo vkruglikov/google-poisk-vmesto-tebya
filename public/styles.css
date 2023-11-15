@@ -143,3 +143,24 @@ body {
 .form__actionsView {
     display: none;
 }
+
+.github-link {
+    all: unset;
+    cursor: pointer;
+    position: absolute;
+    z-index: 100;
+    background: url('assets/github.png') center center / cover no-repeat;
+    width: 24px;
+    height: 24px;
+    right: 10px;
+    top: 10px;
+    opacity: 0.3;
+}
+
+.github-link:hover {
+    opacity: 1;
+}
+
+.play-mode .github-link {
+    display: none;
+}
