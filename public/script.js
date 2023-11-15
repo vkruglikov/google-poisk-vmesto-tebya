@@ -85,7 +85,7 @@ App.prototype = {
                         this.delay(() =>
                             this.playSubmit(() => {
                                 this.delay(() => {
-                                    window.location.href = encodeURI("https://google-poisk-vmesto-tebya.ru/?q=" + str);
+                                    window.location.href = encodeURI("https://google.ru/search?q=" + str);
                                 })
                             })
                         );
