@@ -4,6 +4,12 @@ body {
     font-family: arial,sans-serif;
 }
 
+.play-mode .input input {
+    cursor: default;
+    background: #fff;
+    color: #000;
+}
+
 .content {
     flex-direction: column;
     margin-top: 200px;
@@ -112,7 +118,7 @@ body {
 }
 
 .mouse {
-    transition: transform ease 2s;
+    transition: transform ease 1s;
     transform: translate(100px, -21px);
     position: absolute;
     z-index: 100;
@@ -121,4 +127,19 @@ body {
     width: 15px;
     height: 21px;
     background: url(assets/mouse.png) center center / cover no-repeat;
+}
+
+.hidden {
+    display: none;
+}
+
+.play-mode .form__actionsCreate {
+    display: none;
+}
+.play-mode .form__actionsView {
+    display: inherit;
+}
+
+.form__actionsView {
+    display: none;
 }
