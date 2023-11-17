@@ -90,7 +90,7 @@ App.prototype = {
                         this.delay(() =>
                             this.playSubmit(() => {
                                 this.delay(() => {
-                                    // window.location.href = this.playModeLink;
+                                    window.location.href = this.playModeLink;
                                 })
                             })
                         );
