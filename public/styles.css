@@ -7,7 +7,12 @@ body {
 .play-mode .input input {
     cursor: default;
     background: #fff;
+}
+
+.input input,
+.input input:disabled  {
     color: #000!important;
+    opacity: 1; /* required on iOS */
 }
 
 .content {
