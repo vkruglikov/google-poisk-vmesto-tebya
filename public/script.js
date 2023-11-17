@@ -38,6 +38,7 @@ function App() {
         linkResult: document.getElementById('link-result'),
         linkResultCopy: document.getElementById('link-result-copy'),
     };
+    this.playModeLink = null;
     this.isPlayMode = false;
     this.dom.form.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -58,7 +59,10 @@ function App() {
 }
 App.prototype = {
     onSubmit() {
-        if (this.isPlayMode) return;
+        if (this.isPlayMode) {
+            window.location.href = this.playModeLink;
+            return;
+        };
 
         const value = (this.dom.input.value || '').trim();
         if (!value) return;
@@ -71,6 +75,7 @@ App.prototype = {
     play(str) {
         if (!str) return;
         this.isPlayMode = true;
+        this.playModeLink = encodeURI("https://google.ru/search?q=" + str);
 
         document.body.classList.add('play-mode');
 
@@ -85,7 +90,7 @@ App.prototype = {
                         this.delay(() =>
                             this.playSubmit(() => {
                                 this.delay(() => {
-                                    window.location.href = encodeURI("https://google.ru/search?q=" + str);
+                                    // window.location.href = this.playModeLink;
                                 })
                             })
                         );
@@ -102,6 +107,10 @@ App.prototype = {
         };
 
         this.dom.mouse.style.transform = 'translate(' + (position.left  + offset.left)+ 'px, ' + (position.top + offset.top) + 'px)';
+
+        setTimeout(() => {
+            this.dom.input.closest('.input').classList.add('input_active');
+        }, 500);
         setTimeout(() => {
             callback();
         }, 1000);
@@ -114,7 +123,9 @@ App.prototype = {
                 callback();
                 return;
             }
-            this.dom.input.value += letters.shift();
+            const letter = letters.shift();
+
+            this.dom.input.value += letter;
         }, 150);
     },
     playSubmit(callback) {
@@ -123,8 +134,10 @@ App.prototype = {
             left: 20,
             top: 15
         };
-
         this.dom.mouse.style.transform = 'translate(' + (position.left  + offset.left)+ 'px, ' + (position.top + offset.top) + 'px)';
+        setTimeout(() => {
+            this.dom.buttonSubmit.classList.add('form__button_active');
+        }, 500)
         setTimeout(() => {
             callback();
         }, 2000);
